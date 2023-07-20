@@ -5,13 +5,13 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="Aggrosoft\Shopware\AsyncReverseProxyBan\Storefront\Framework\Cache\ReverseProxy\ReverseProxyCache" decorates="Shopware\Storefront\Framework\Cache\ReverseProxy\ReverseProxyCache">
+        <service id="Aggrosoft\Shopware\AsyncReverseProxyBan\Storefront\Framework\Cache\ReverseProxy\ReverseProxyCache" decorates="Shopware\Storefront\Framework\Cache\ReverseProxy\ReverseProxyCache" decoration-on-invalid="ignore">
             <argument type="service" id="Aggrosoft\Shopware\AsyncReverseProxyBan\Storefront\Framework\Cache\ReverseProxy\ReverseProxyCache.inner" />
             <argument type="service" id="messenger.bus.shopware" />
             <argument type="service" id="Shopware\Storefront\Framework\Cache\ReverseProxy\AbstractReverseProxyGateway" />
         </service>
-        <service id="Aggrosoft\Shopware\AsyncReverseProxyBan\MessageQueue\Handler\InvalidateCacheTagHandler">
-            <argument type="service" id="Shopware\Storefront\Framework\Cache\ReverseProxy\AbstractReverseProxyGateway" />
+        <service id="Aggrosoft\Shopware\AsyncReverseProxyBan\MessageQueue\Handler\InvalidateCacheTagHandler" >
+            <argument type="service" id="Shopware\Storefront\Framework\Cache\ReverseProxy\AbstractReverseProxyGateway" on-invalid="ignore" />
             <tag name="messenger.message_handler" />
         </service>
     </services>

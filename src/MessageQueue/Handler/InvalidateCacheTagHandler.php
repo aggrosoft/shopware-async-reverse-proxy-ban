@@ -3,10 +3,11 @@
 namespace Aggrosoft\Shopware\AsyncReverseProxyBan\MessageQueue\Handler;
 
 use Aggrosoft\Shopware\AsyncReverseProxyBan\MessageQueue\Message\InvalidateCacheTagMessage;
-use Shopware\Core\Framework\MessageQueue\Handler\AbstractMessageHandler;
 use Shopware\Storefront\Framework\Cache\ReverseProxy\AbstractReverseProxyGateway;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-class InvalidateCacheTagHandler extends AbstractMessageHandler
+#[AsMessageHandler]
+class InvalidateCacheTagHandler
 {
 
     public function __construct(AbstractReverseProxyGateway $gateway)
@@ -17,9 +18,9 @@ class InvalidateCacheTagHandler extends AbstractMessageHandler
     /**
      * @param InvalidateCacheTagMessage $message
      */
-    public function handle($message): void
+    public function __invoke(InvalidateCacheTagMessage $message): void
     {
-        $this->gateway->invalidate([$message->getTag()]);
+        $this->gateway?->invalidate([$message->getTag()]);
     }
 
     public static function getHandledMessages(): iterable
