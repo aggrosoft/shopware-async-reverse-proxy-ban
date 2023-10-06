@@ -37,43 +37,43 @@ class ReverseProxyCache implements StoreInterface
         }
     }
 
-    public function lookup(Request $request)
+    public function lookup(Request $request): ?Response
     {
         return $this->decorated->lookup($request);
     }
 
-    public function write(Request $request, Response $response)
+    public function write(Request $request, Response $response): string
     {
         return $this->decorated->write($request, $response);
     }
 
-    public function invalidate(Request $request)
+    public function invalidate(Request $request): void
     {
-        return $this->decorated->invalidate($request);
+        $this->decorated->invalidate($request);
     }
 
-    public function lock(Request $request)
+    public function lock(Request $request): bool
     {
         return $this->decorated->lock($request);
     }
 
-    public function unlock(Request $request)
+    public function unlock(Request $request): bool
     {
         return $this->decorated->unlock($request);
     }
 
-    public function isLocked(Request $request)
+    public function isLocked(Request $request): bool
     {
         return $this->decorated->isLocked($request);
     }
 
-    public function purge(string $url)
+    public function purge(string $url): bool
     {
         return $this->decorated->purge($url);
     }
 
-    public function cleanup()
+    public function cleanup(): void
     {
-        return $this->decorated->cleanup();
+        $this->decorated->cleanup();
     }
 }
