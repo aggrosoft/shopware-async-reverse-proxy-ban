@@ -2,7 +2,9 @@
 
 namespace Aggrosoft\Shopware\AsyncReverseProxyBan\MessageQueue\Message;
 
-class InvalidateCacheTagMessage
+use Shopware\Core\Framework\MessageQueue\AsyncMessageInterface;
+
+class InvalidateCacheTagMessage implements AsyncMessageInterface
 {
     private string $tag;
 

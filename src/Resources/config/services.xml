@@ -14,5 +14,21 @@
             <argument type="service" id="Shopware\Storefront\Framework\Cache\ReverseProxy\AbstractReverseProxyGateway" on-invalid="ignore" />
             <tag name="messenger.message_handler" />
         </service>
+        <service id="Aggrosoft\Shopware\AsyncReverseProxyBan\MessageQueue\Handler\WarmupProductDetailRouteHandler" >
+            <argument type="service" id="product_visibility.repository"/>
+            <argument type="service" id="http_client"/>
+            <tag name="messenger.message_handler" />
+        </service>
+
+        <service id="Aggrosoft\Shopware\AsyncReverseProxyBan\MessageQueue\Handler\WarmupCategoryRouteHandler" >
+            <argument type="service" id="category.repository"/>
+            <argument type="service" id="sales_channel.repository"/>
+            <argument type="service" id="http_client"/>
+            <tag name="messenger.message_handler" />
+        </service>
+        <service id="Aggrosoft\Shopware\AsyncReverseProxyBan\Subscriber\InvalidateCacheEventSubscriber" >
+            <argument type="service" id="messenger.bus.shopware" />
+            <tag name="kernel.event_subscriber"/>
+        </service>
     </services>
 </container>

@@ -1,8 +1,8 @@
 {
   "name": "aggrosoft/shopware-async-reverse-proxy-ban",
-  "description": "Make shopware 6 reverse proxy ban calls asynchronous",
+  "description": "Make shopware 6 reverse proxy ban calls asynchronous and auto warm listing and detail caches",
   "type": "shopware-platform-plugin",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "license": "proprietary",
   "autoload": {
     "psr-4": {

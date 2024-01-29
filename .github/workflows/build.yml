@@ -6,6 +6,7 @@ jobs:
     uses: FriendsOfShopware/actions/.github/workflows/github.yml@main
     with:
       extensionName: 'AggroAsyncReverseProxyBanPlugin'
-      shopwareVersion: '6.4.0'
+      shopwareVersion: '6.5.7'
+      cliVersion: '0.4.1'
     secrets:
       ghToken: ${{ secrets.GH_TOKEN }}
